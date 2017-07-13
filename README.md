@@ -10,7 +10,7 @@ To run cd to mainEmberrite/ and run with: python emberrite.py
 	         /                        \
 	        |                          |
 	        |                          |
-                |                          |
+            |                          |
 	        \                          /
              \                        /
               \                      /
