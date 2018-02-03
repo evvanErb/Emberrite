@@ -1,9 +1,11 @@
 #!/usr/bin/python
+import os
 
 #Welcome text
 def title():
 	#Print icon
-	infile = open("Icon.txt", "r")
+	here = os.path.dirname(os.path.abspath(__file__))
+	infile = open(here+"/Icon.txt", "r")
 	icon = infile.read()
 	infile.close
 	print(icon)
