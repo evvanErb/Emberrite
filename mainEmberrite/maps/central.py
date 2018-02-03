@@ -480,7 +480,7 @@ class rooms:
 
 	def town(self):
 		#Description
-		print("\nYou are in small bustling town.\nPeople are hurrying around you on their days errands.\nThe Goldshire Inn is to the west.\nThere is a black smith to the east.\nThere are roads out of town to the north and south.")
+		print("\nYou are in small bustling town.\nPeople are hurrying around you on their days errands.\nThe Goldshire Inn is to the west.\nThere is a blacksmith to the east.\nThere are roads out of town to the north and south.")
 
 		#Player choice
 		choice = raw_input("\n>>> ").lower()
@@ -630,26 +630,8 @@ class rooms:
 		
 		#Barmaid
 		elif ((choice == "talk to barmaid") or (choice == "talk to the barmaid")):
-			barmaidService = True
-			while (barmaidService):
-				purchase = raw_input("\n'ello love what can I get for you?\n>>> ")
-				if (purchase == "room"):
-					if (self.inv.returnGold() >= 20):
-						print("\nThat'll be 20 gold pieces. Thanks!")
-						self.hero.heal(20)
-						self.inv.spendGold(20)
-					else:
-						print("\nSorry love you don't have enough gold!")
-				elif (purchase == "drink"):
-					if (self.inv.returnGold() >= 5):
-						print("\nThat'll be 5 gold pieces. Thanks!")
-						self.inv.spendGold(5)
-					else:
-						print("\nSorry love you don't have enough gold!")
-				elif ((purchase == "stop") or (purchase == "leave")):
-					barmaidService = False
-				else:
-					print("\nSorry love we don't have that!")
+			global innBarmaid
+			innBarmaid.conversation(self.hero, self.inv)
 			return(self.inn())
 
 		#Check for standard option
@@ -1129,6 +1111,7 @@ waterfallCaveEntrance = False
 bear = npcs.npc("bear",25,4,10)
 bearCaveSkeleton = ["axe","gold",""]
 smithInv = {"long sword":50,"plate-mail":120}
+innBarmaid = npcs.barmaid("Jackie", 2, 1, 1, {"room":20,"beer":5,"ale":5,"drink":5})
 waterElemental = npcs.npc("water elemental",40,1,12)
 waterfallTresure = ["super health potion","gold",""]
 mountainCaveEntrance = False
