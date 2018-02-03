@@ -1,10 +1,6 @@
 #!/usr/bin/python
 import random
-from emberriteClasses.characterClass import character
-from emberriteClasses.monsterClass import monster
-from emberriteClasses.battleClass import battle
-from emberriteClasses.inventoryClass import inventory
-from emberriteClasses.potionClass import potions
+from emberriteClasses import *
 
 #Creating player character
 def characterCreation():

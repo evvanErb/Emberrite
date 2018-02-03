@@ -3,6 +3,7 @@
 import random
 from emberriteClasses import *
 from functions import *
+from enemies import *
 
 #Rooms
 class rooms:
