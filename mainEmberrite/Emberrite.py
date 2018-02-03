@@ -1140,7 +1140,7 @@ mountainCaveSkeletons = ["amulet","gold",""]
 skeleton = monster("skeleton",10,1,5)
 
 #********MAIN********
-title()
+#title()
 hero = characterCreation()
 inv = inventoryCreation(hero)
 print("\n[*] Character created!")
