@@ -102,6 +102,10 @@ def standardOptions(choice,hero,inv):
 		return("\n[!] That can not be opened!")
 	elif (choice[:5] == "close"):
 		return("\n[!] That can not be closed!")
+		
+	#Examine command not a command
+	elif (choice[:7] == "examine"):
+		return("\n[!] There is nothing out of the ordinary.")
 	
 	#If there is nothing to search for
 	elif (choice == "search"):
