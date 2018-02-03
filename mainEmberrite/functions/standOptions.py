@@ -1,7 +1,6 @@
 #!/usr/bin/python
 import random
-from people import *
-from items import *
+import items
 
 #Dealing with standard options
 def standardOptions(choice,hero,inv):
@@ -66,7 +65,7 @@ def standardOptions(choice,hero,inv):
 	#Potions
 	elif (choice == "drink health potion"):
 		if ("health potion" in inv.returnInv()):
-			potions("health potion").healthPotion(hero)
+			items.potions("health potion").healthPotion(hero)
 			inv.removeItem("health potion")
 			return("\n[*] You now have " + str(hero.returnHealth()) + " hitpoints.")
 		else:
@@ -74,7 +73,7 @@ def standardOptions(choice,hero,inv):
 
 	elif (choice == "drink super health potion"):
 		if ("super health potion" in inv.returnInv()):
-			potions("super health potion").superHealthPotion(hero)
+			items.potions("super health potion").superHealthPotion(hero)
 			inv.removeItem("super health potion")
 			return("\n[*] You now have " + str(hero.returnHealth()) + " hitpoints.")
 		else:

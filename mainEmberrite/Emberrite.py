@@ -1,11 +1,11 @@
 #!/usr/bin/python2
 
 import random
-from functions import *
-from npcs import *
-from battles import *
-from people import *
-from items import *
+import functions
+import npcs
+import battles
+import people
+import items
 
 #Rooms
 class rooms:
@@ -35,7 +35,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.entrance())
 
     def caveway(self):
@@ -59,7 +59,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.caveway())
 
     def cave(self):
@@ -67,7 +67,7 @@ class rooms:
         global caveBugbear
         if (caveBugbear.returnHealth() > 0):
             print("\nYou've encountered a bugbear!")
-            battle(self.hero,self.inv,caveBugbear).battleManager()
+            battles.battle(self.hero,self.inv,caveBugbear).battleManager()
 
         #Description
         if (self.inv.torchStatus()):
@@ -87,7 +87,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.cave())
 
     def kitchen(self):
@@ -154,7 +154,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.kitchen())
         
     def backyard(self):
@@ -177,7 +177,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.backyard())
     
     def diningRoom(self):
@@ -202,7 +202,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.diningRoom())
 
     def familyRoom(self):
@@ -225,7 +225,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.familyRoom())
 
     def bedRoom(self):
@@ -250,7 +250,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.bedRoom())
 
     def frontPorch(self):
@@ -298,7 +298,7 @@ class rooms:
             return(self.frontPorch())
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.frontPorch())
 
     def walkway(self):
@@ -319,7 +319,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.walkway())
     
     def forest(self):
@@ -355,7 +355,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.forest())
 
     def forestCave(self):
@@ -379,7 +379,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.forestCave())
     
     def clearing(self):
@@ -405,7 +405,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.clearing())
     
     def road(self):
@@ -426,7 +426,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.road())
     
     def forestCaveway(self):
@@ -450,7 +450,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.forestCaveway())
     
     def darkForest(self):
@@ -476,7 +476,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.darkForest())
 
     def town(self):
@@ -498,7 +498,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.town())
 
     def waterfall(self):
@@ -534,7 +534,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.waterfall())
 
     def bearCave(self):
@@ -542,7 +542,7 @@ class rooms:
         global bear,bearCaveSkeleton
         if (bear.returnHealth() > 0):
             print("\nYou've encountered a bear!")
-            battle(self.hero,self.inv,bear).battleManager()
+            battles.battle(self.hero,self.inv,bear).battleManager()
 
         #Description
         if (self.inv.torchStatus()):
@@ -588,7 +588,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.bearCave())
 
     def darkway(self):
@@ -612,7 +612,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.darkway())
     
     def inn(self):
@@ -655,7 +655,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.inn())
     
     def blackSmith(self):
@@ -700,7 +700,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.blackSmith())
     
     def marshyPath(self):
@@ -721,7 +721,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.marshyPath())
     
     def ravene(self):
@@ -742,7 +742,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.ravene())
 
     def marsh(self):
@@ -750,7 +750,7 @@ class rooms:
         global waterElemental
         if (waterElemental.returnHealth() > 0):
             print("\nYou've encountered a beast with three heads looming from the marsh!\nOne head of a dragon, one of a griffon, and one of a chimera.")
-            battle(self.hero,self.inv,waterElemental).battleManager()
+            battles.battle(self.hero,self.inv,waterElemental).battleManager()
 
         #Description
         print("\nYou are in a smelly decaying marsh.\nThere are pathes to the north and to the east.")
@@ -769,7 +769,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.marsh())
 
     def waterfallCave(self):
@@ -818,7 +818,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.waterfallCave())
 
     def lake(self):
@@ -839,7 +839,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.lake())
     
     def beach(self):
@@ -858,7 +858,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.beach())
         
     def mountainPath(self):
@@ -896,7 +896,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.mountainPath())
         
     def witchesHut(self):
@@ -904,7 +904,7 @@ class rooms:
         global witch,witchesCellarDoor
         if (witch.returnHealth() > 0):
             print("\nYou've encountered a witch!")
-            battle(self.hero,self.inv,witch).battleManager()
+            battles.battle(self.hero,self.inv,witch).battleManager()
 
         #Description
         print("\nYou are in a small dark hut.\nThere is a door to the east.")
@@ -935,7 +935,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.witchesHut())
 
     def witchesCellar(self):
@@ -984,7 +984,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.witchesCellar())
     
     def dwellingCave(self):
@@ -992,7 +992,7 @@ class rooms:
         global lion,dwellingCaveSkeleton
         if (lion.returnHealth() > 0):
             print("\nYou've encountered a mountain lion!")
-            battle(self.hero,self.inv,lion).battleManager()
+            battles.battle(self.hero,self.inv,lion).battleManager()
 
         #Description
         if (self.inv.torchStatus()):
@@ -1038,7 +1038,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.dwellingCave())
 
     def mountainCave(self):
@@ -1046,7 +1046,7 @@ class rooms:
         global troll,mountainCaveSkeletons
         if (troll.returnHealth() > 0):
             print("\nYou've encountered a troll!")
-            battle(self.hero,self.inv,troll).battleManager()
+            battles.battle(self.hero,self.inv,troll).battleManager()
 
         #Description
         if (self.inv.torchStatus()):
@@ -1092,7 +1092,7 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.mountainCave())
     
     def graveyard(self):
@@ -1100,7 +1100,7 @@ class rooms:
         global skeleton
         if (skeleton.returnHealth() > 0):
             print("\nYou've encountered a skeleton!")
-            battle(self.hero,self.inv,skeleton).battleManager()
+            battles.battle(self.hero,self.inv,skeleton).battleManager()
 
         #Description
         print("\nYou are in a graveyard.\nThere is a path leadin west.\nTo the east is a giant castle looming over the small graveyard.")
@@ -1117,34 +1117,34 @@ class rooms:
 
         #Check for standard option
         else:
-            print(standardOptions(choice,self.hero,self.inv))
+            print(functions.standardOptions(choice,self.hero,self.inv))
             return(self.graveyard())
 
 #Variables that trigger events and monsters
-caveBugbear = npc("bugbear",10,2,4)
+caveBugbear = npcs.npc("bugbear",10,2,4)
 kitchenCupboard = [False,"salt","garlic","health potion"]
 mailbox = [False,"letter"]
 forestCaveEntrance = False
 unicorn = True
 waterfallCaveEntrance = False
-bear = npc("bear",25,4,10)
+bear = npcs.npc("bear",25,4,10)
 bearCaveSkeleton = ["axe","gold",""]
 smithInv = {"long sword":50,"plate-mail":120}
-waterElemental = npc("water elemental",40,1,12)
+waterElemental = npcs.npc("water elemental",40,1,12)
 waterfallTresure = ["super health potion","gold",""]
 mountainCaveEntrance = False
-witch = npc("witch",25,1,12)
+witch = npcs.npc("witch",25,1,12)
 witchesCellarDoor = False
 witchesCellarInv = ["super health potion","health potion",""]
-lion = npc("mountain lion",20,2,8)
+lion = npcs.npc("mountain lion",20,2,8)
 dwellingCaveSkeleton = ["short sword","gold",""]
-troll = npc("troll",50,3,10)
+troll = npcs.npc("troll",50,3,10)
 mountainCaveSkeletons = ["amulet","gold",""]
-skeleton = npc("skeleton",10,1,5)
+skeleton = npcs.npc("skeleton",10,1,5)
 
 #********MAIN********
 #title()
-hero = characterCreation()
-inv = inventoryCreation(hero)
+hero = functions.characterCreation()
+inv = functions.inventoryCreation(hero)
 print("\n[*] Character created!")
 rooms(inv,hero)

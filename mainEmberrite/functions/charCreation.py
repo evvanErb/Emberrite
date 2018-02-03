@@ -1,12 +1,12 @@
 #!/usr/bin/python
 import random
-from people import *
-from items import *
-from characterClasses import *
+import people
+import characterClasses
+import races
 
 #Creating player character
 def characterCreation():
-	races = ["human","elf","dwarf","half-elf"]
+	playRaces = ["human","elf","dwarf","half-elf"]
 	alignments = ["chaotic good","neutral good","lawful good","chaotic neutral","neutral","lawful neutral","chaotic evil","neutral evil","lawful evil"]
 	classes = ["rogue","hunter","paladin","warrior"]
 
@@ -15,11 +15,12 @@ def characterCreation():
 	age = raw_input("\nHow old are you?\n>>> ")
 
 	#Get player race
-	race = raw_input("\nWhat race are you?\n>>> ").lower()
-	while (race not in races):
+	charRace = raw_input("\nWhat race are you?\n>>> ").lower()
+	while (charRace not in playRaces):
 		print("\n[!] Non-playable race! Please enter one of the following:")
-		print(races)
-		race = raw_input("\nWhat race are you?\n>>> ").lower()
+		print(playRaces)
+		charRace = raw_input("\nWhat race are you?\n>>> ").lower()
+	charRace = races.race(charRace)
 		
 	#Get player class type
 	classType = raw_input("\nWhat class are you?\n>>> ").lower()
@@ -38,7 +39,7 @@ def characterCreation():
 			print(alignments)
 			alignment = raw_input("\nWhat alignment are you?\n>>> ").lower()
 	#Create charClass object
-	classType = charClass(classType)
+	classType = characterClasses.charClass(classType)
 	#Get characters health based on class
 	health = classType.healthReturn()
 
@@ -47,4 +48,4 @@ def characterCreation():
 	for stat in stats:
 		stats[stat] = random.randint(10,18)
 	#Return player
-	return(character(name,gender,age,race,classType,alignment,stats,health,health))
+	return(people.character(name,gender,age,charRace,classType,alignment,stats,health,health))

@@ -1,6 +1,4 @@
 import random
-from people import *
-from npcs import *
 
 #Class for dealing with battles
 class battle:
