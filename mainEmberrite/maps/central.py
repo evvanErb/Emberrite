@@ -141,7 +141,7 @@ class rooms:
 		elif ((choice == "take health potion") and (kitchenCupboard[0])):
 			if ("health potion" in kitchenCupboard):
 				kitchenCupboard.remove("health potion")
-				self.inv.addItem("health potion")
+				self.inv.addItem(items.healthPotion())
 				print("\n[*] Health potion taken.")
 				return(self.kitchen())
 			else:
@@ -808,7 +808,7 @@ class rooms:
 		elif (choice == "take super health potion"):
 			if ("super health potion" in waterfallTresure):
 				waterfallTresure.remove("super health potion")
-				self.inv.addItem("super health potion")
+				self.inv.addItem(items.superHealthPotion())
 				print("\n[*] Super health potion taken.")
 				return(self.waterfallCave())
 			else:
@@ -965,7 +965,7 @@ class rooms:
 		elif (choice == "take super health potion"):
 			if ("super health potion" in witchesCellarInv):
 				witchesCellarInv.remove("super health potion")
-				self.inv.addItem("super health potion")
+				self.inv.addItem(items.superHealthPotion())
 				print("\n[*] Super health potion taken.")
 				return(self.witchesCellar())
 			else:
@@ -974,7 +974,7 @@ class rooms:
 		elif (choice == "take health potion"):
 			if ("health potion" in witchesCellarInv):
 				witchesCellarInv.remove("health potion")
-				self.inv.addItem("health potion")
+				self.inv.addItem(items.healthPotion())
 				print("\n[*] Health potion taken.")
 				return(self.witchesCellar())
 			else:

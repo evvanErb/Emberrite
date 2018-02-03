@@ -6,7 +6,13 @@ import items
 def standardOptions(choice,hero,inv):
 	#Check inventory
 	if (choice == "inventory"):
-		return(inv.returnInv())
+		strToRet = ""
+		for i in inv.returnInv():
+			if(type(i) is str):
+				strToRet += (i + ", ")
+			else:
+				strToRet += i.returnName() + ", "
+		return(strToRet)
 	
 	#Clear screen
 	elif (choice == "clear"):
@@ -64,20 +70,30 @@ def standardOptions(choice,hero,inv):
 	
 	#Potions
 	elif (choice == "drink health potion"):
-		if ("health potion" in inv.returnInv()):
-			items.potions("health potion").healthPotion(hero)
-			inv.removeItem("health potion")
-			return("\n[*] You now have " + str(hero.returnHealth()) + " hitpoints.")
-		else:
-			return("\n[!] That is not in your inventory!")
+		#iterate over inventory to check for health potion
+		for i in range(len(inv.returnInv())):
+			#if item is of type health potion
+			if (isinstance(inv.returnInv()[i], items.healthPotion)):
+				#make sure its a regular health potion and not super one
+				if(inv.returnInv()[i].returnName().lower() == "health potion"):
+					#heal hero and delete item from inventory
+					inv.returnInv()[i].heal(hero)
+					inv.removeItem(inv.returnInv()[i])
+					return("\n[*] You now have " + str(hero.returnHealth()) + " hitpoints.")
+		#else return its not in inv
+		return("\n[!] That is not in your inventory!")
 
 	elif (choice == "drink super health potion"):
-		if ("super health potion" in inv.returnInv()):
-			items.potions("super health potion").superHealthPotion(hero)
-			inv.removeItem("super health potion")
-			return("\n[*] You now have " + str(hero.returnHealth()) + " hitpoints.")
-		else:
-			return("\n[!] That is not in your inventory!")
+		#iterate over inventory to check for health potion
+		for i in range(len(inv.returnInv())):
+			#if item is of type health potion
+			if (isinstance(inv.returnInv()[i], items.superHealthPotion)):
+				#heal hero and delete item from inventory
+				inv.returnInv()[i].heal(hero)
+				inv.removeItem(inv.returnInv()[i])
+				return("\n[*] You now have " + str(hero.returnHealth()) + " hitpoints.")
+		#else return its not in inv
+		return("\n[!] That is not in your inventory!")
 	
 	#Items that can not be taken/opened/closed
 	elif (choice[:4] == "take"):

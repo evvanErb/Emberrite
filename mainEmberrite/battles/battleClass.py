@@ -1,4 +1,5 @@
 import random
+import items
 
 #Class for dealing with battles
 class battle:
@@ -104,24 +105,34 @@ class battle:
         
         #If player wants to drink potion
         elif (choice == "drink health potion"):
-            if ("health potion" in self.inv.returnInv()):
-                potions("health potion").healthPotion(self.hero)
-                self.inv.removeItem("health potion")
-                print("\n[*] You now have " + str(self.hero.returnHealth()) + " hitpoints.")
-                return(True)
-            else:
-                print("\n[!] That is not in your inventory!")
-                return(self.playerTurn())
-
+            #iterate over inventory to check for health potion
+            for i in range(len(self.inv.returnInv())):
+                #if item is of type health potion
+                if (isinstance(self.inv.returnInv()[i], items.healthPotion)):
+                    #make sure its a regular health potion and not super one
+                    if(self.inv.returnInv()[i].returnName().lower() == "health potion"):
+                        #heal hero and delete item from inventory
+                        self.inv.returnInv()[i].heal(self.hero)
+                        self.inv.removeItem(self.inv.returnInv()[i])
+                        print("\n[*] You now have " + str(self.hero.returnHealth()) + " hitpoints.")
+                        return(True)
+            #else return its not in inv
+            print("\n[!] That is not in your inventory!")
+            return(self.playerTurn())
+            
         elif (choice == "drink super health potion"):
-            if ("super health potion" in self.inv.returnInv()):
-                potions("super health potion").superHealthPotion(self.hero)
-                self.inv.removeItem("super health potion")
-                print("\n[*] You now have " + str(self.hero.returnHealth()) + " hitpoints.")
-                return(True)
-            else:
-                print("\n[!] That is not in your inventory!")
-                return(self.playerTurn())
+            #iterate over inventory to check for health potion
+            for i in range(len(self.inv.returnInv())):
+                #if item is of type health potion
+                if (isinstance(self.inv.returnInv()[i], items.superHealthPotion)):
+                    #heal hero and delete item from inventory
+                    self.inv.returnInv()[i].heal(self.hero)
+                    self.inv.removeItem(self.inv.returnInv()[i])
+                    print("\n[*] You now have " + str(self.hero.returnHealth()) + " hitpoints.")
+                    return(True)
+                #else return its not in inv
+            print("\n[!] That is not in your inventory!")
+            return(self.playerTurn())
 
         else:
             print("\n[!] Unknown command...\nCommands are: attack, block, flee, check health")
