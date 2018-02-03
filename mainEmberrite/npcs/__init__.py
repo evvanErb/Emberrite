@@ -1,3 +1,3 @@
 #__init__ file for classes
 
-from monsterClass import *
+from npcClass import *

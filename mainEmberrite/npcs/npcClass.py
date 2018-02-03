@@ -1,7 +1,7 @@
 import random
 
 #Monster building class
-class monster:
+class npc:
     def __init__(self,name,health,armor,damageDeal):
         self.name = name
         self.health = health

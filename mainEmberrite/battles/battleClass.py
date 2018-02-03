@@ -1,14 +1,15 @@
 import random
-from potionClass import potions
+from people import *
+from npcs import *
 
 #Class for dealing with battles
 class battle:
-    def __init__(self,hero,inv,monster):
+    def __init__(self,hero,inv,npc):
         self.hero = hero
         self.inv = inv
-        self.monster = monster
+        self.npc = npc
         self.heroBlock = 0
-        self.monsterBlock = 0
+        self.npcBlock = 0
     
     #Battle manager manages turns until one side flees or dies
     def battleManager(self):
@@ -19,13 +20,13 @@ class battle:
             while(battlingPlay and battlingMons):
                 battlingPlay = self.playerTurn()
                 if (battlingPlay):
-                    battlingMons = self.monsterTurn()
+                    battlingMons = self.npcTurn()
                 else:
                     return(True)
             return(False)
         else:
             while(battlingPlay and battlingMons):
-                battlingMons = self.monsterTurn()
+                battlingMons = self.npcTurn()
                 if (battlingMons):
                     battlingPlay = self.playerTurn()
                 else:
@@ -35,8 +36,8 @@ class battle:
     #Determine if player or monster goes first (returns True if player 1st)
     def initiaitveDeterm(self):
         playerRole = random.randint(1,6)
-        monsterRole = random.randint(1,6)
-        if (playerRole >= monsterRole):
+        npcRole = random.randint(1,6)
+        if (playerRole >= npcRole):
             print("\n[*] You have initiative.")
             return(True)
         else:
@@ -66,11 +67,11 @@ class battle:
             damageDeal = random.randint(1,damageDeal)
             print("\nYou dealt the monster " + str(damageDeal) + " points of damage.")
             #First take damage from monsters block value
-            while ((self.monsterBlock > 0) and (damageDeal > 0)):
-                self.monsterBlock -= 1
+            while ((self.npcBlock > 0) and (damageDeal > 0)):
+                self.npcBlock -= 1
                 damageDeal -= 1
             #Deal remaning damage to monster
-            self.monster.damage(damageDeal)
+            self.npc.damage(damageDeal)
             return(True)
         
         #if player choses to block
@@ -129,25 +130,25 @@ class battle:
             return(self.playerTurn())
 
     #Monsters battle turn
-    def monsterTurn(self):
+    def npcTurn(self):
         #Check for monster death
-        if (self.monster.returnHealth() <= 0):
+        if (self.npc.returnHealth() <= 0):
             print("\nYou killed the monster.")
             return(False)
 
         #Monster damage
-        damageDeal = self.monster.returnDamageDeal()
+        damageDeal = self.npc.returnDamageDeal()
         damageDeal = random.randint(1,damageDeal)
 
         #Monster block
-        blockValue = random.randint(1, self.monster.returnArmor())
+        blockValue = random.randint(1, self.npc.returnArmor())
 
         #Monster decision making
         decidingFactor = random.randint(1,10)
 
         #Monster health >= 5
         #Attack
-        if ((decidingFactor >= 4) and (self.monster.returnHealth >= 5)):
+        if ((decidingFactor >= 4) and (self.npc.returnHealth >= 5)):
             print("\nThe monster dealt you " + str(damageDeal) + " points of damage.")
             #First take damage from hero block value
             while ((self.heroBlock > 0) and (damageDeal > 0)):
@@ -157,19 +158,19 @@ class battle:
             self.hero.damage(damageDeal)
             return(True)
         #Block
-        elif ((decidingFactor >= 2) and (self.monster.returnHealth >= 5)):
+        elif ((decidingFactor >= 2) and (self.npc.returnHealth >= 5)):
             print("\nThe monster chose to block.")
-            self.monsterBlock += blockValue
+            self.npcBlock += blockValue
             return(True)
         #Flee
-        elif ((decidingFactor == 1) and (self.monster.returnHealth >= 5)):
+        elif ((decidingFactor == 1) and (self.npc.returnHealth >= 5)):
             print("\nThe monster fled")
-            self.monster.damage(100000000)
+            self.npc.damage(100000000)
             return(False)
         
         #Monster health < 5
         #Attack
-        elif ((decidingFactor >= 7) and (self.monster.returnHealth < 5)):
+        elif ((decidingFactor >= 7) and (self.npc.returnHealth < 5)):
             print("\nThe monster dealt you " + str(damageDeal) + " points of damage.")
             #First take damage from hero block value
             while ((self.heroBlock > 0) and (damageDeal > 0)):
@@ -179,12 +180,12 @@ class battle:
             self.hero.damage(damageDeal)
             return(True)
         #Block
-        elif ((decidingFactor >= 4) and (self.monster.returnHealth < 5)):
+        elif ((decidingFactor >= 4) and (self.npc.returnHealth < 5)):
             print("\nThe monster chose to block.")
-            self.monsterBlock += blockValue
+            self.npcBlock += blockValue
             return(True)
         #Flee
-        elif ((decidingFactor >= 1) and (self.monster.returnHealth < 5)):
+        elif ((decidingFactor >= 1) and (self.npc.returnHealth < 5)):
             print("\nThe monster fled")
-            self.monster.damage(100000000)
+            self.npc.damage(100000000)
             return(False)

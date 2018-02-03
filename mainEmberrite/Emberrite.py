@@ -1,9 +1,11 @@
 #!/usr/bin/python2
 
 import random
-from emberriteClasses import *
 from functions import *
-from enemies import *
+from npcs import *
+from battles import *
+from people import *
+from items import *
 
 #Rooms
 class rooms:
@@ -915,7 +917,7 @@ class rooms:
             return(self.lake())
         elif ((choice == "down") and (witchesCellarDoor)):
             return(self.witchesCellar())
-        elif ((choice == "s") or (choice == "south") or (choice == "w") or (choice == "west") or (choice == "e") or (choice == "east")):
+        elif ((choice == "s") or (choice == "south") or (choice == "w") or (choice == "west") or (choice == "n") or (choice == "north")):
             print("\n[!] You can not go that way!")
             return(self.witchesHut())
         elif (choice == "look"):
@@ -925,7 +927,7 @@ class rooms:
             searchVal = random.randint(1,6)
             if (searchVal <= 2):
                 witchesCellarDoor = True
-                print("\n[*] You found a secret cave entrance to the north!")
+                print("\n[*] You found a secret trapdoor!")
                 return(self.witchesHut())
             else:
                 print("\n[!] You found nothing!")
@@ -1119,26 +1121,26 @@ class rooms:
             return(self.graveyard())
 
 #Variables that trigger events and monsters
-caveBugbear = monster("bugbear",10,2,4)
+caveBugbear = npc("bugbear",10,2,4)
 kitchenCupboard = [False,"salt","garlic","health potion"]
 mailbox = [False,"letter"]
 forestCaveEntrance = False
 unicorn = True
 waterfallCaveEntrance = False
-bear = monster("bear",25,4,10)
+bear = npc("bear",25,4,10)
 bearCaveSkeleton = ["axe","gold",""]
 smithInv = {"long sword":50,"plate-mail":120}
-waterElemental = monster("water elemental",40,1,12)
+waterElemental = npc("water elemental",40,1,12)
 waterfallTresure = ["super health potion","gold",""]
 mountainCaveEntrance = False
-witch = monster("witch",25,0,12)
+witch = npc("witch",25,1,12)
 witchesCellarDoor = False
 witchesCellarInv = ["super health potion","health potion",""]
-lion = monster("mountain lion",20,2,8)
+lion = npc("mountain lion",20,2,8)
 dwellingCaveSkeleton = ["short sword","gold",""]
-troll = monster("troll",50,3,10)
+troll = npc("troll",50,3,10)
 mountainCaveSkeletons = ["amulet","gold",""]
-skeleton = monster("skeleton",10,1,5)
+skeleton = npc("skeleton",10,1,5)
 
 #********MAIN********
 #title()

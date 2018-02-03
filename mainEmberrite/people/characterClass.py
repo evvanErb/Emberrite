@@ -25,6 +25,9 @@ class character:
     
     def returnClassType(self):
         return(self.classType)
+    
+    def returnClassName(self):
+        return(self.classType.titleReturn())
 
     def returnAlignment(self):
         return(self.alignment)

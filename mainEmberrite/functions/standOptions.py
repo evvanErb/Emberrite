@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import random
-from emberriteClasses import *
+from people import *
+from items import *
 
 #Dealing with standard options
 def standardOptions(choice,hero,inv):
