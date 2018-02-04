@@ -67,7 +67,7 @@ class inventory:
             self.weapon = weapons.weapon("long sword",8,5,0,2)
             return(self.weapon)
         else:
-            return("Weapon selected not compatible with class")
+            return(False)
 
     #Equip armor (limited by class)
     def equipArmor(self,armor):

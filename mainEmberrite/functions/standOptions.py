@@ -42,11 +42,14 @@ def standardOptions(choice,hero,inv):
 			if (isinstance(inv.returnInv()[i], weapons.weapon)):
 				#if weapon has same name as chosen weapon equip
 				if(inv.returnInv()[i].returnName == weaponChoice):
+					#Check if weapon compatible with class while equipping it
 					temp = inv.returnWeapon()
-					inv.equipWeapon(weaponChoice)
-					inv.addItem(temp)
-					inv.removeItem(inv.returnInv()[i])
-					return("\n[*] Weapon changed to " + weaponChoice)
+					if(inv.equipWeapon(weaponChoice)):
+						inv.addItem(temp)
+						inv.removeItem(inv.returnInv()[i])
+						return("\n[*] Weapon changed to " + weaponChoice)
+					else:
+						return("\n[!] That weapon is not compatible with your class!")
 		#else return not in inv
 		return("\n[!] That weapon is not in your inventory")
 		
