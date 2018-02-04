@@ -81,10 +81,10 @@ class battle:
                 self.heroBlock += 2
                 return(True)
             elif (ac >= 0):
-                self.heroBlock += 2
+                self.heroBlock += 4
                 return(True)
             else:
-                self.heroBlock += 2
+                self.heroBlock += 6
                 return(True)
         
         #if player choses to flee
