@@ -6,6 +6,7 @@ import battles
 import people
 import items
 import weapons
+import armors
 
 #Rooms
 class rooms:
@@ -1090,7 +1091,7 @@ unicorn = True
 waterfallCaveEntrance = False
 bear = npcs.npc("bear",25,4,10)
 bearCaveSkeleton = ["axe","gold",""]
-blacksmith = npcs.vendor("Bruce", 5, 2, 2, {weapons.weapon("long sword",8,5,0,2):50,"plate-mail":120})
+blacksmith = npcs.vendor("Bruce", 5, 2, 2, {weapons.weapon("long sword",8,5,0,2):50,armors.armor("plate-mail",-2,"Whole Body"):120})
 innBarmaid = npcs.barmaid("Jackie", 2, 1, 1, {"room":20,"beer":5,"ale":5,"drink":5})
 waterElemental = npcs.npc("water elemental",40,1,12)
 waterfallTresure = ["super health potion","gold",""]

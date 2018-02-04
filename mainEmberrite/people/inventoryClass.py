@@ -1,4 +1,5 @@
 import weapons
+import armors
 
 #Inventory building class
 class inventory:
@@ -16,10 +17,16 @@ class inventory:
     def returnWeapon(self):
         return(self.weapon.returnName())
     
+    def returnWeaponObject(self):
+        return(self.weapon)
+    
     def returnGold(self):
         return(self.gold)
     
     def returnArmor(self):
+        return(self.armor.returnName())
+    
+    def returnArmorObject(self):
         return(self.armor)
     
     #Add or remove items from inventory
@@ -33,14 +40,7 @@ class inventory:
 
     #Determine AC
     def armorClass(self):
-        if (self.armor == "plate-mail"):
-            return(-2)
-        elif (self.armor == "leather"):
-            return(4)
-        elif (self.armor == "chain-mail"):
-            return(0)
-        elif (self.armor == "cloth"):
-            return(7)
+        self.armor.returnArmorClass()
     
     #Determine weapon damage range
     def weaponDamage(self):
@@ -72,17 +72,17 @@ class inventory:
     #Equip armor (limited by class)
     def equipArmor(self,armor):
         if ((armor == "chain-mail") and ((self.hero.returnClassName() == "hunter") or (self.hero.returnClassName() == "warrior"))):
-            self.armor = "chain-mail"
-            return(self.armor)
+            self.armor = armors.armor("chain-mail",0,"Whole Body")
+            return(self.armor.returnName())
         elif ((armor == "leather") and ((self.hero.returnClassName() == "hunter") or (self.hero.returnClassName() == "rogue") or (self.hero.returnClassName() == "warrior"))):
-            self.armor = "leather"
-            return(self.armor)
+            self.armor = armors.armor("leather",4,"Whole Body")
+            return(self.armor.returnName())
         elif ((armor == "plate-mail") and ((self.hero.returnClassName() == "paladin") or (self.hero.returnClassName() == "warrior"))):
-            self.armor = "plate-mail"
-            return(self.armor)
+            self.armor = armors.armor("plate-mail",-2,"Whole Body")
+            return(self.armor.returnName())
         elif (armor == "cloth"):
-            self.armor = "cloth"
-            return(self.armor)
+            self.armor = armors.armor("cloth",7,"Whole Body")
+            return(self.armor.returnName())
         else:
             return("Armor selected not compatible with class")
 

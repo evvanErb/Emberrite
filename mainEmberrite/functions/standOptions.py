@@ -2,6 +2,7 @@
 import random
 import items
 import weapons
+import armors
 
 #Dealing with standard options
 def standardOptions(choice,hero,inv):
@@ -59,14 +60,23 @@ def standardOptions(choice,hero,inv):
 	#Manage armor
 	elif (choice == "change armor"):
 		armorChoice = raw_input("\nEnter the armor you would like to equip\n>>> ")
-		if (armorChoice in inv.returnInv()):
-			temp = inv.returnArmor()
-			inv.equipArmor(armorChoice)
-			inv.addItem(temp)
-			inv.removeItem(armorChoice)
-			return("\n[*] Armor changed to " + armorChoice)
-		else:
-			return("\n[!] That armor is not in your inventory")
+		#iterate over inventory to check for weapons
+		for i in range(len(inv.returnInv())):
+			#if item is of type weapon
+			if (isinstance(inv.returnInv()[i], armors.armor)):
+				#if weapon has same name as chosen weapon equip
+				if(inv.returnInv()[i].returnName() == armorChoice):
+					#Check if weapon compatible with class while equipping it
+					temp = inv.returnArmor()
+					if(inv.equipArmor(armorChoice)):
+						inv.addItem(temp)
+						inv.removeItem(inv.returnInv()[i])
+						return("\n[*] Armor changed to " + armorChoice)
+					else:
+						return("\n[!] That armor is not compatible with your class!")
+		#else return not in inv
+		return("\n[!] That weapon is not in your inventory")
+		
 	elif (choice == "check armor"):
 		return(inv.returnArmor())
 	
