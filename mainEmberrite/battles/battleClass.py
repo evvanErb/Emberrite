@@ -1,5 +1,6 @@
 import random
 import items
+import maps
 
 #Class for dealing with battles
 class battle:
@@ -91,7 +92,7 @@ class battle:
             fleeChance = random.randint(1,5)
             if (fleeChance == 1):
                 print("\n[*] You fled!")
-                rooms(self.inv,self.hero)
+                maps.rooms(self.inv,self.hero)
             else:
                 print("\n[*] Flee atempt failed!")
                 return(True)
