@@ -48,22 +48,22 @@ class inventory:
 
     #Equip weapon (limited by class)
     def equipWeapon(self,weapon):
-        if ((weapon == "bow") and (self.hero.returnClassType() == "hunter")):
+        if ((weapon == "bow") and (self.hero.returnClassName() == "hunter")):
             self.weapon = weapons.weapon("bow",4,50,0,2)
             return(self.weapon)
-        elif ((weapon == "short sword") and ((self.hero.returnClassType() == "hunter") or (self.hero.returnClassType() == "rogue") or (self.hero.returnClassType() == "warrior"))):
+        elif ((weapon == "short sword") and ((self.hero.returnClassName() == "hunter") or (self.hero.returnClassName() == "rogue") or (self.hero.returnClassName() == "warrior"))):
             self.weapon = weapons.weapon("short sword",6,5,0,1)
             return(self.weapon)
-        elif ((weapon == "hammer") and (self.hero.returnClassType() == "paladin")):
+        elif ((weapon == "hammer") and (self.hero.returnClassName() == "paladin")):
             self.weapon = weapons.weapon("hammer",6,5,0,1)
             return(self.weapon)
-        elif ((weapon == "knife") and (self.hero.returnClassType() == "rogue")):
+        elif ((weapon == "knife") and (self.hero.returnClassName() == "rogue")):
             self.weapon = weapons.weapon("knife",4,5,0,1)
             return(self.weapon)
-        elif ((weapon == "axe") and ((self.hero.returnClassType() == "warrior") or (self.hero.returnClassType() == "hunter"))):
+        elif ((weapon == "axe") and ((self.hero.returnClassName() == "warrior") or (self.hero.returnClassName() == "hunter"))):
             self.weapon = weapons.weapon("axe",6,5,0,1)
             return(self.weapon)
-        elif ((weapon == "long sword") and (self.hero.returnClassType() == "warrior")):
+        elif ((weapon == "long sword") and (self.hero.returnClassName() == "warrior")):
             self.weapon = weapons.weapon("long sword",8,5,0,2)
             return(self.weapon)
         else:
@@ -71,13 +71,13 @@ class inventory:
 
     #Equip armor (limited by class)
     def equipArmor(self,armor):
-        if ((armor == "chain-mail") and ((self.hero.returnClassType() == "hunter") or (self.hero.returnClassType() == "warrior"))):
+        if ((armor == "chain-mail") and ((self.hero.returnClassName() == "hunter") or (self.hero.returnClassName() == "warrior"))):
             self.armor = "chain-mail"
             return(self.armor)
-        elif ((armor == "leather") and ((self.hero.returnClassType() == "hunter") or (self.hero.returnClassType() == "rogue") or (self.hero.returnClassType() == "warrior"))):
+        elif ((armor == "leather") and ((self.hero.returnClassName() == "hunter") or (self.hero.returnClassName() == "rogue") or (self.hero.returnClassName() == "warrior"))):
             self.armor = "leather"
             return(self.armor)
-        elif ((armor == "plate-mail") and ((self.hero.returnClassType() == "paladin") or (self.hero.returnClassType() == "warrior"))):
+        elif ((armor == "plate-mail") and ((self.hero.returnClassName() == "paladin") or (self.hero.returnClassName() == "warrior"))):
             self.armor = "plate-mail"
             return(self.armor)
         elif (armor == "cloth"):
