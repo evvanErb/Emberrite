@@ -93,7 +93,7 @@ class rooms:
 			return(self.cave())
 		#If unicorn seen offer take gem command
 		elif (not unicorn and gem and choice == "take gem"):
-			self.inv.addItem("gem")
+			self.inv.addItem(items.item("gem"))
 			gem = False
 			print("\n[*] Gem taken.")
 			return(self.cave())
@@ -141,7 +141,7 @@ class rooms:
 		elif ((choice == "take salt") and (kitchenCupboard[0])):
 			if ("salt" in kitchenCupboard):
 				kitchenCupboard.remove("salt")
-				self.inv.addItem("salt")
+				self.inv.addItem(items.item("salt"))
 				print("\n[*] Salt taken.")
 				return(self.kitchen())
 			else:
@@ -150,7 +150,7 @@ class rooms:
 		elif ((choice == "take garlic") and (kitchenCupboard[0])):
 			if ("garlic" in kitchenCupboard):
 				kitchenCupboard.remove("garlic")
-				self.inv.addItem("garlic")
+				self.inv.addItem(items.item("garlic"))
 				print("\n[*] Garlic taken.")
 				return(self.kitchen())
 			else:
@@ -596,7 +596,7 @@ class rooms:
 		elif (choice == "take axe"):
 			if ("axe" in bearCaveSkeleton):
 				bearCaveSkeleton.remove("axe")
-				self.inv.addItem("axe")
+				self.inv.addItem(weapons.weapon("axe",6,5,0,1))
 				print("\n[*] Axe taken.")
 				return(self.bearCave())
 			else:
@@ -1007,7 +1007,7 @@ class rooms:
 		elif (choice == "take short sword"):
 			if ("short sword" in dwellingCaveSkeleton):
 				dwellingCaveSkeleton.remove("short sword")
-				self.inv.addItem("short sword")
+				self.inv.addItem(weapons.weapon("short sword",6,5,0,1))
 				print("\n[*] Short sword taken.")
 				return(self.dwellingCave())
 			else:
@@ -1061,7 +1061,7 @@ class rooms:
 		elif (choice == "take amulet"):
 			if ("amulet" in dwellingCaveSkeleton):
 				dwellingCaveSkeleton.remove("amulet")
-				self.inv.addItem("amulet")
+				self.inv.addItem(items.item("amulet"))
 				print("\n[*] Amulet taken.")
 				return(self.mountainCave())
 			else:
