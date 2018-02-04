@@ -842,7 +842,7 @@ class rooms:
 	def mountainPath(self):
 		global mountainCaveEntrance
 		#Description
-		print("\nYou are on a mountain path.\nThere is a cave to the north.\nThe path runs north and south.")
+		print("\nYou are on a mountain path.\nThere is a cave to the north.\nThe path runs east and west.")
 		if (mountainCaveEntrance):
 			print("There is another cave to the south.")
 
@@ -1081,7 +1081,7 @@ class rooms:
 			battles.battle(self.hero,self.inv,skeleton).battleManager()
 
 		#Description
-		print("\nYou are in a graveyard.\nThere is a path leadin west.\nTo the east is a giant castle looming over the small graveyard.")
+		print("\nYou are in a graveyard.\nThere is a path leading west.\nTo the east is a giant castle looming over the small graveyard.")
 
 		#Player choice
 		choice = raw_input("\n>>> ").lower()
