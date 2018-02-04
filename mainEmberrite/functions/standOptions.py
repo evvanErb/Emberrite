@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import random
 import items
+import weapons
 
 #Dealing with standard options
 def standardOptions(choice,hero,inv):
@@ -35,14 +36,20 @@ def standardOptions(choice,hero,inv):
 	#Manage weapon
 	elif (choice == "change weapon"):
 		weaponChoice = raw_input("\nEnter the weapon you would like to equip\n>>> ")
-		if (weaponChoice in inv.returnInv()):
-			temp = inv.returnWeapon()
-			inv.equipWeapon(weaponChoice)
-			inv.addItem(temp)
-			inv.removeItem(weaponChoice)
-			return("\n[*] Weapon changed to " + weaponChoice)
-		else:
-			return("\n[!] That weapon is not in your inventory")
+		#iterate over inventory to check for weapons
+		for i in range(len(inv.returnInv())):
+			#if item is of type weapon
+			if (isinstance(inv.returnInv()[i], weapons.weapon)):
+				#if weapon has same name as chosen weapon equip
+				if(inv.returnInv()[i].returnName == weaponChoice):
+					temp = inv.returnWeapon()
+					inv.equipWeapon(weaponChoice)
+					inv.addItem(temp)
+					inv.removeItem(inv.returnInv()[i])
+					return("\n[*] Weapon changed to " + weaponChoice)
+		#else return not in inv
+		return("\n[!] That weapon is not in your inventory")
+		
 	elif (choice == "check weapon"):
 		return(inv.returnWeapon())
 

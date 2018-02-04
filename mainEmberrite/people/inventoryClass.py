@@ -1,4 +1,4 @@
-import random
+import weapons
 
 #Inventory building class
 class inventory:
@@ -14,7 +14,7 @@ class inventory:
         return(self.inv[1:])
     
     def returnWeapon(self):
-        return(self.weapon)
+        return(self.weapon.returnName())
     
     def returnGold(self):
         return(self.gold)
@@ -44,44 +44,27 @@ class inventory:
     
     #Determine weapon damage range
     def weaponDamage(self):
-        checkBonus = self.weapon.split(":")
-        try:
-            bonus = int(checkBonus[1][1:])
-        except:
-            bonus = 0
-        if (self.weapon[:3] == "bow"):
-            damageDeal = 4
-        elif (self.weapon[:10] == "long sword"):
-            damageDeal = 8
-        elif (self.weapon[:11] == "short sword"):
-            damageDeal = 6
-        elif (self.weapon[:3] == "axe"):
-            damageDeal = 6
-        elif (self.weapon[:6] == "hammer"):
-            damageDeal = 6
-        elif (self.weapon[:5] == "knife"):
-            damageDeal = 4
-        return(damageDeal + bonus)
+        return(self.weapon.returnTotalDamage())
 
     #Equip weapon (limited by class)
     def equipWeapon(self,weapon):
         if ((weapon == "bow") and (self.hero.returnClassType() == "hunter")):
-            self.weapon = "bow"
+            self.weapon = weapons.weapon("bow",4,50,0,2)
             return(self.weapon)
         elif ((weapon == "short sword") and ((self.hero.returnClassType() == "hunter") or (self.hero.returnClassType() == "rogue") or (self.hero.returnClassType() == "warrior"))):
-            self.weapon = "short sword"
+            self.weapon = weapons.weapon("short sword",6,5,0,1)
             return(self.weapon)
         elif ((weapon == "hammer") and (self.hero.returnClassType() == "paladin")):
-            self.weapon = "hammer"
+            self.weapon = weapons.weapon("hammer",6,5,0,1)
             return(self.weapon)
         elif ((weapon == "knife") and (self.hero.returnClassType() == "rogue")):
-            self.weapon = "knife"
+            self.weapon = weapons.weapon("knife",4,5,0,1)
             return(self.weapon)
         elif ((weapon == "axe") and ((self.hero.returnClassType() == "warrior") or (self.hero.returnClassType() == "hunter"))):
-            self.weapon = "axe"
+            self.weapon = weapons.weapon("axe",6,5,0,1)
             return(self.weapon)
         elif ((weapon == "long sword") and (self.hero.returnClassType() == "warrior")):
-            self.weapon = "long sword"
+            self.weapon = weapons.weapon("long sword",8,5,0,2)
             return(self.weapon)
         else:
             return("Weapon selected not compatible with class")
