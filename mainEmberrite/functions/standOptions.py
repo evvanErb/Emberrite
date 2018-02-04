@@ -41,7 +41,7 @@ def standardOptions(choice,hero,inv):
 			#if item is of type weapon
 			if (isinstance(inv.returnInv()[i], weapons.weapon)):
 				#if weapon has same name as chosen weapon equip
-				if(inv.returnInv()[i].returnName == weaponChoice):
+				if(inv.returnInv()[i].returnName() == weaponChoice):
 					#Check if weapon compatible with class while equipping it
 					temp = inv.returnWeapon()
 					if(inv.equipWeapon(weaponChoice)):

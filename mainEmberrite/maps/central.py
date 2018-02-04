@@ -5,6 +5,7 @@ import npcs
 import battles
 import people
 import items
+import weapons
 
 #Rooms
 class rooms:
@@ -640,7 +641,6 @@ class rooms:
 			return(self.inn())
 	
 	def blackSmith(self):
-		global smithInv
 		#Description
 		print("\nYou are in a blacksmith's shop.\nThe blacksmith is working at the forge.")
 
@@ -656,27 +656,7 @@ class rooms:
 		
 		#Blacksmith
 		elif ((choice == "talk to blacksmith") or (choice == "talk to the blacksmith")):
-			service = True
-			while (service):
-				for i in smithInv:
-					print("\nI have a " + i + " in-stock.")
-				purchase = raw_input("\nWhat can I get for you?\n>>> ")
-				if (purchase[:3] == "buy"):
-					buyingItem = raw_input("\nWhat would you like to buy?\n>>> ")
-					if (buyingItem in smithInv):
-						if (self.inv.returnGold() >= smithInv[buyingItem]):
-							print("\nThat'll be " + str(smithInv[buyingItem]) + " gold pieces. Thanks!")
-							self.inv.spendGold(smithInv[buyingItem])
-							self.inv.addItem(buyingItem)
-							del smithInv[buyingItem]
-						else:
-							print("\nYou don't have enough gold for that!")
-					else:
-						print("\nI don't have that!")
-				elif ((purchase == "stop") or (purchase == "leave")):
-					service = False
-				else:
-					print("\nI can't do that!")
+			blacksmith.conversation(self.inv)
 			return(self.blackSmith())
 
 		#Check for standard option
@@ -1110,7 +1090,7 @@ unicorn = True
 waterfallCaveEntrance = False
 bear = npcs.npc("bear",25,4,10)
 bearCaveSkeleton = ["axe","gold",""]
-smithInv = {"long sword":50,"plate-mail":120}
+blacksmith = npcs.vendor("Bruce", 5, 2, 2, {weapons.weapon("long sword",8,5,0,2):50,"plate-mail":120})
 innBarmaid = npcs.barmaid("Jackie", 2, 1, 1, {"room":20,"beer":5,"ale":5,"drink":5})
 waterElemental = npcs.npc("water elemental",40,1,12)
 waterfallTresure = ["super health potion","gold",""]
