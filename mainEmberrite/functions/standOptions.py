@@ -35,7 +35,7 @@ def standardOptions(choice,hero,inv):
 			return("\n[!] Torch is already on")
 	
 	#Manage weapon
-	elif (choice == "change weapon"):
+	elif ((choice == "change weapon") or (choice == "equip weapon")):
 		weaponChoice = raw_input("\nEnter the weapon you would like to equip\n>>> ")
 		#iterate over inventory to check for weapons
 		for i in range(len(inv.returnInv())):
@@ -58,7 +58,7 @@ def standardOptions(choice,hero,inv):
 		return(inv.returnWeapon())
 
 	#Manage armor
-	elif (choice == "change armor"):
+	elif ((choice == "change armor") or (choice == "equip armor")):
 		armorChoice = raw_input("\nEnter the armor you would like to equip\n>>> ")
 		#iterate over inventory to check for weapons
 		for i in range(len(inv.returnInv())):
