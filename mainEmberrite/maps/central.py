@@ -64,6 +64,9 @@ class rooms:
 			return(self.caveway())
 
 	def cave(self):
+		#get unicorn and gem status
+		global unicorn
+		global gem
 		#Check if monster still alive if so start battle
 		global caveBugbear
 		if (caveBugbear.returnHealth() > 0):
@@ -73,6 +76,9 @@ class rooms:
 		#Description
 		if (self.inv.torchStatus()):
 			print("\nYou are in a small cave.\nThere is a waterfall filling a pool of water to the south.\nThere is a small crack in the wall to the north that you may be able to fit through.")
+			#If unicorn seen
+			if(not unicorn and gem):
+				print("There is a giltering gem in the pool.")
 		else:
 			print("\nYou are in a dark room.")
 
@@ -84,6 +90,16 @@ class rooms:
 			print("\n[!] You can not go that way!")
 			return(self.cave())
 		elif (choice == "look"):
+			return(self.cave())
+		#If unicorn seen offer take gem command
+		elif (not unicorn and gem and choice == "take gem"):
+			self.inv.addItem("gem")
+			gem = False
+			print("\n[*] Gem taken.")
+			return(self.cave())
+		#If gem already taken
+		elif (not gem and choice == "take gem"):
+			print("\n[!] Gem already taken!")
 			return(self.cave())
 
 		#Check for standard option
@@ -1088,6 +1104,7 @@ kitchenCupboard = [False,"salt","garlic","health potion"]
 mailbox = [False,"letter"]
 forestCaveEntrance = False
 unicorn = True
+gem = True
 waterfallCaveEntrance = False
 bear = npcs.npc("bear",25,4,10)
 bearCaveSkeleton = ["axe","gold",""]
