@@ -9,9 +9,9 @@ import weapons
 import armors
 
 class castleRooms:
-    def __init__(self,inv,hero):
-    	self.inv = inv
+    def __init__(self, inv, hero):
 		self.hero = hero
+		self.inv = inv
 		self.gates()
     
     def gates(self):
