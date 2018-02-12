@@ -28,6 +28,13 @@ class room:
 				#if room has inventory
 				for i in self.inventory:
 					print("\nThere is a " + i.returnName() + " in the room.")
+				#if container in room
+				for i in self.containers:
+					#if container open
+					if(i[0]):
+						#iterate over container contents
+						for c in range(1, len(i)):
+							print("\nThere is a " + i[c].returnName() + " in the room.")
 
 			#Player choice
 			choice = raw_input("\n>>> ").lower()
@@ -69,11 +76,27 @@ class room:
 			elif(len(choice) > 5):
 				#if user trys to take an item
 				if (choice[:5] == "take "):
-					if (choice[6:]in self.inventory):
-						self.inventory.remove(choice[6:])
-						self.inv.addItem(items.item(choice[6:]))
-						print("\n[*] " + choice[6:] + " taken.")
-						continue
+					for i in range(len(self.inventory)):
+						#if in invetnory
+						if (choice[6:] == self.inventory[i].returnName()):
+							toAdd = self.inventory[i]
+							inv.addItem(toAdd)
+							self.inventory.pop(i)
+							print("\n[*] " + toAdd.returnName() + " taken.")
+							continue
+					#check containers
+					else:
+						for i in self.containers:
+							#if container open
+							if(i[0]):
+								#iterate over container contents
+								for c in range(1, len(i)):
+									addedItem = i[c]
+									inv.addItem(addedItem)
+									i.pop(c)
+									print("\n[*] " + addedItem.returnName() + " taken.")
+									continue
+									
 				
 				#if user trys to open a container
 				if (choice[:5] == "open "):
