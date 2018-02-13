@@ -144,13 +144,15 @@ def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople):
 		#check containers
 		for i in roomContainers:
 			#if container open
-			if(i[0]):
+			if(roomContainers[i][0]):
 				#iterate over container contents
-				for c in range(1, len(i)):
-					addedItem = i[c]
-					inv.addItem(addedItem)
-					i.pop(c)
-					return("\n[*] " + addedItem.returnName() + " taken.")
+				for c in range(1, len(roomContainers[i])):
+					#if item in container
+					if(choice[5:] == roomContainers[i][c].returnName()):
+						addedItem = roomContainers[i][c]
+						inv.addItem(addedItem)
+						roomContainers[i].pop(c)
+						return("\n[*] " + addedItem.returnName() + " taken.")
 		#if  item not in room or in closed container
 		return("\n[!] That item can not be taken!")
 						

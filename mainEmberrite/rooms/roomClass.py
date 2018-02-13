@@ -52,10 +52,10 @@ class room:
 				#if container in room
 				for i in self.containers:
 					#if container open
-					if(i[0]):
+					if(self.containers[i][0]):
 						#iterate over container contents
-						for c in range(1, len(i)):
-							print("\nThere is a " + i[c].returnName() + " in the room.")
+						for c in range(1, len(self.containers[i])):
+							print("\nThere is a " + self.containers[i][c].returnName() + " in the room.")
 
 			#Player choice
 			choice = raw_input("\n>>> ").lower()
