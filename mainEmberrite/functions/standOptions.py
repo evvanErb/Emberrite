@@ -5,7 +5,7 @@ import weapons
 import armors
 
 #Dealing with standard options
-def standardOptions(choice,hero,inv):
+def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople):
 	#Check inventory
 	if (choice == "inventory"):
 		strToRet = ""
@@ -114,14 +114,6 @@ def standardOptions(choice,hero,inv):
 				return("\n[*] You now have " + str(hero.returnHealth()) + " hitpoints.")
 		#else return its not in inv
 		return("\n[!] That is not in your inventory!")
-	
-	#Items that can not be taken/opened/closed
-	elif (choice[:4] == "take"):
-		return("\n[!] That can not be taken!")
-	elif (choice[:4] == "open"):
-		return("\n[!] That can not be opened!")
-	elif (choice[:5] == "close"):
-		return("\n[!] That can not be closed!")
 		
 	#Examine command not a command
 	elif (choice[:7] == "examine"):
@@ -138,7 +130,57 @@ def standardOptions(choice,hero,inv):
 	#Exit game
 	elif (choice =="exit"):
 		exit()
-	
+
+	#Items that can not be taken/opened/closed
+	#if user trys to take an item
+	if (choice[:4] == "take"):
+		for i in range(len(roomInv)):
+			#if in invetnory
+			if (choice[5:] == roomInv[i].returnName()):
+				toAdd = roomInv[i]
+				inv.addItem(toAdd)
+				roomInv.pop(i)
+				return("\n[*] " + toAdd.returnName() + " taken.")
+		#check containers
+		for i in roomContainers:
+			#if container open
+			if(i[0]):
+				#iterate over container contents
+				for c in range(1, len(i)):
+					addedItem = i[c]
+					inv.addItem(addedItem)
+					i.pop(c)
+					return("\n[*] " + addedItem.returnName() + " taken.")
+		#if  item not in room or in closed container
+		return("\n[!] That item can not be taken!")
+						
+	#if user trys to open a container
+	elif (choice[:4] == "open"):
+		if (choice[5:] in roomContainers):
+			roomContainers[choice[5:]][0] = True
+			return("\n[*] " + choice[5:] + " opened.")
+		#If it can not be opened
+		else:
+			return("\n[!] That can not be opened!")
+
+	#if user trys to close a container
+	elif (choice[:5] == "close"):
+		if (choice[6:] in roomContainers):
+			roomContainers[choice[6:]][0] = False
+			return("\n[*] " + choice[6:] + " closed.")
+		#If it can not be closed
+		else:
+			return("\n[!] That can not be closed!")
+
+	#talk to people in room
+	elif (choice[:7] == "talk to"):
+		for i in range(len(roomPeople)):
+			if(choice[8:] == roomPeople[i].returnName()):
+				roomPeople[i].conversation(inv)
+				return("")
+		#if person not in roomPeople
+		return("\n[!] You can not talk to them!")
+
 	#Unknown commands
 	else:
 		return("\n[!] Unknown command...")

@@ -1,8 +1,10 @@
 #!/usr/bin/python
-import maps
+import functions
+import roomLocator
+import battles
 
 class room:
-	def __init__(self, location, adjacents, description, dark, inventory, containers):
+	def __init__(self, location, adjacents, description, dark, inventory, containers, monsters, bed, people):
 		#room location number
 		self.location = location
 		#array of adjacents room numbers, -1 if no room there
@@ -15,12 +17,31 @@ class room:
 		self.inventory = inventory
 		#containers holding items
 		self.containers = containers
+		#monsters in room
+		self.monsters = monsters
+		#bed in room
+		self.bed = bed
+		#people in room that can interact with player
+		self.people = people
+	
+	#accessors
+	def returnLocation(self):
+		return(self.location)
 	
 	def manager(self, hero, inv):
 		while(True):
+    		#check if monster in room
+			if(len(self.monsters) > 0):
+    			#if monster health greater than 0
+				if(self.monsters[0].returnHealth() > 0):
+    				#print monster name
+					print("\nYou've encountered a " + str(self.monsters[0].returnName()) + "!")
+					#start battle
+					battles.battle(hero,inv,self.monsters[0]).battleManager()
+
 			#description
 			#if dark and torch not lit
-			if(dark and (not self.inv.torchStatus())):
+			if(self.dark and (not inv.torchStatus())):
 				print("\nYou are in a dark room.")
 			#else print description
 			else:
@@ -41,29 +62,29 @@ class room:
 			
 			#rooms
 			if ((choice == "n") or (choice == "north")):
-				if(self.adjacents[0] > 0):
-					return(getRoom(self.adjacents[0]), hero, inv)
+				if(self.adjacents[0] >= 0):
+					return(roomLocator.getRoom(self.adjacents[0], hero, inv))
 				else:
 					print("\n[!] You can not go that way!")
 					continue
 				
 			elif((choice == "s") or (choice == "south")):
-				if(self.adjacents[1] > 0):
-					return(getRoom(self.adjacents[1]), hero, inv)
+				if(self.adjacents[1] >= 0):
+					return(roomLocator.getRoom(self.adjacents[1], hero, inv))
 				else:
 					print("\n[!] You can not go that way!")
 					continue
 				
 			elif((choice == "e") or (choice == "east")):
-				if(self.adjacents[2] > 0):
-					return(getRoom(self.adjacents[2]), hero, inv)
+				if(self.adjacents[2] >= 0):
+					return(roomLocator.getRoom(self.adjacents[2], hero, inv))
 				else:
 					print("\n[!] You can not go that way!")
 					continue
 				
 			elif((choice == "w") or (choice == "west")):
-				if(self.adjacents[3] > 0):
-					return(getRoom(self.adjacents[3]), hero, inv)
+				if(self.adjacents[3] >= 0):
+					return(roomLocator.getRoom(self.adjacents[3], hero, inv))
 				else:
 					print("\n[!] You can not go that way!")
 					continue
@@ -71,49 +92,14 @@ class room:
 			#look around
 			elif (choice == "look"):
 				continue
-			
-			#if input greater than 5
-			elif(len(choice) > 5):
-				#if user trys to take an item
-				if (choice[:5] == "take "):
-					for i in range(len(self.inventory)):
-						#if in invetnory
-						if (choice[6:] == self.inventory[i].returnName()):
-							toAdd = self.inventory[i]
-							inv.addItem(toAdd)
-							self.inventory.pop(i)
-							print("\n[*] " + toAdd.returnName() + " taken.")
-							continue
-					#check containers
-					else:
-						for i in self.containers:
-							#if container open
-							if(i[0]):
-								#iterate over container contents
-								for c in range(1, len(i)):
-									addedItem = i[c]
-									inv.addItem(addedItem)
-									i.pop(c)
-									print("\n[*] " + addedItem.returnName() + " taken.")
-									continue
-									
-				
-				#if user trys to open a container
-				if (choice[:5] == "open "):
-					if (choice[6:]in self.containers):
-						self.containers[choice[7:]][0] = True
-						print("\n[*] " + choice[6:] + " opened.")
-						continue
-			
-			#if user trys to open a container
-			elif(len(choice) > 6):
-				if (choice[:6] == "close "):
-					if (choice[7:] in self.containers):
-						self.containers[choice[7:]][0] = False
-						print("\n[*] " + choice[7:] + " closed.")
-						continue
+
+			#if there is a bed then the player can sleep
+			elif ((choice == "sleep") and (self.bed)):
+				hero.heal(5)
+				print("\n[*] You slept and now have " + str(hero.returnHealth()) + " hitpoints.")
+				continue
 
 			#Check for standard option
 			else:
-				print(functions.standardOptions(choice, hero, inv))
+				print(functions.standardOptions(choice, hero, inv, self.inventory, self.containers, self.people))
 				continue
