@@ -5,7 +5,7 @@ import weapons
 import armors
 
 #Dealing with standard options
-def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople):
+def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople, roomLocation):
 	#Check inventory
 	if (choice == "inventory"):
 		strToRet = ""
@@ -130,6 +130,10 @@ def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople):
 				return("\nWelcome to Emberrite!")
 			else:
 				return("\n[!] That can not be read!")
+	
+	#The cake
+	elif ((choice == "take cake") and (roomLocation == 5)):
+		return("\n[!] The cake is a lie!")
 	
 	#Exit game
 	elif (choice =="exit"):

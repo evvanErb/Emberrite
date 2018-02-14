@@ -101,5 +101,5 @@ class room:
 
 			#Check for standard option
 			else:
-				print(functions.standardOptions(choice, hero, inv, self.inventory, self.containers, self.people))
+				print(functions.standardOptions(choice, hero, inv, self.inventory, self.containers, self.people, self.location))
 				continue
