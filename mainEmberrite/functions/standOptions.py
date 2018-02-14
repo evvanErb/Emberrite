@@ -124,8 +124,12 @@ def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople):
 		return("\n[!] You found nothing!")
 	
 	#The letter from the mailbox
-	elif ((choice == "read letter") and ("letter" in inv.returnInv())):
-		return("\nWelcome to Emberrite!")
+	elif (choice == "read letter"):
+		for i in range(len(inv.returnInv())):
+			if("letter" == inv.returnInv()[i].returnName()):
+				return("\nWelcome to Emberrite!")
+			else:
+				return("\n[!] That can not be read!")
 	
 	#Exit game
 	elif (choice =="exit"):
