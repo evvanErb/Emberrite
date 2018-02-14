@@ -70,28 +70,28 @@ class room:
 				choice = choice[3:]
 			#directions
 			if ((choice == "n") or (choice == "north")):
-				if(self.adjacents[0] >= 0):
+				if((self.adjacents[0] >= 0) and (not self.secretDoors[0])):
 					roomLocator.getRoom(self.adjacents[0]).manager(hero, inv)
 				else:
 					print("\n[!] You can not go that way!")
 					continue
 				
 			elif((choice == "s") or (choice == "south")):
-				if(self.adjacents[1] >= 0):
+				if((self.adjacents[1] >= 0) and (not self.secretDoors[1])):
 					roomLocator.getRoom(self.adjacents[1]).manager(hero, inv)
 				else:
 					print("\n[!] You can not go that way!")
 					continue
 				
 			elif((choice == "e") or (choice == "east")):
-				if(self.adjacents[2] >= 0):
+				if((self.adjacents[2] >= 0) and (not self.secretDoors[2])):
 					roomLocator.getRoom(self.adjacents[2]).manager(hero, inv)
 				else:
 					print("\n[!] You can not go that way!")
 					continue
 				
 			elif((choice == "w") or (choice == "west")):
-				if(self.adjacents[3] >= 0):
+				if((self.adjacents[3] >= 0) and (not self.secretDoors[1])):
 					roomLocator.getRoom(self.adjacents[3]).manager(hero, inv)
 				else:
 					print("\n[!] You can not go that way!")
@@ -109,5 +109,5 @@ class room:
 
 			#Check for standard option
 			else:
-				print(functions.standardOptions(choice, hero, inv, self.inventory, self.containers, self.people, self.location))
+				print(functions.standardOptions(choice, hero, inv, self.inventory, self.containers, self.people, self.location, self.secretDoors))
 				continue

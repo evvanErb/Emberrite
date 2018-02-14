@@ -5,7 +5,7 @@ import weapons
 import armors
 
 #Dealing with standard options
-def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople, roomLocation):
+def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople, roomLocation, secretDoors):
 	#Check inventory
 	if (choice == "inventory"):
 		strToRet = ""
@@ -121,7 +121,13 @@ def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople, roomLo
 	
 	#If there is nothing to search for
 	elif (choice == "search"):
-		return("\n[!] You found nothing!")
+		searchVal = random.randint(1,6)
+		if ((searchVal <= 2) and (True in secretDoors)):
+			for i in range(len(secretDoors)):
+				secretDoors[i] = False
+			return("\n[*] You found a secret door!")
+		else:
+			return("\n[!] You found nothing!")
 	
 	#The letter from the mailbox
 	elif (choice == "read letter"):
@@ -213,7 +219,7 @@ def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople, roomLo
 	elif (choice[:7] == "talk to"):
 		for i in range(len(roomPeople)):
 			if(choice[8:] == roomPeople[i].returnName()):
-				roomPeople[i].conversation(inv)
+				roomPeople[i].conversation(inv, hero)
 				return("")
 		#if person not in roomPeople
 		return("\n[!] You can not talk to them!")

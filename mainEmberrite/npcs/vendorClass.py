@@ -48,7 +48,7 @@ class vendor(npcClass.npc):
 		return("\nI don't have that!")
 	
 	#convo
-	def conversation(self,playerInv):
+	def conversation(self, playerInv, hero):
 		service = True
 		while (service):
 			#list inventory
@@ -65,7 +65,7 @@ class vendor(npcClass.npc):
 				buyingItem = raw_input("\nWhat would you like to buy?\n>>> ")
 				print(self.sellItem(buyingItem,playerInv))
 			#Stop convo
-			elif ((purchase == "stop") or (purchase == "leave")):
+			elif ((purchase == "stop") or (purchase == "leave") or (purchase == "bye") or (purchase == "goodbye")):
 				service = False
 			else:
 				print("\nI can't do that!")

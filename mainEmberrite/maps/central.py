@@ -4,9 +4,11 @@ import rooms
 import items
 import people
 import npcs
+import weapons
+import armors
 
 centralRooms=[
-	#(location, adjacent rooms[n,s,e,w], description, dark, inventory, containers, monsters, bed, people)
+	#(location, adjacent rooms[n,s,e,w], description, dark, inventory, containers, monsters, bed, people, secret passageways[n,s,e,w])
     rooms.room(0, [3,1,-1,-1], "\nYou are in a small cellar.\nThere is a stairwell to the north.\nThere is a small crack in the wall to the south that you may be able to fit through.", True, [], {}, [], False, [], [False, False, False, False]),
 
 	rooms.room(1, [0,2,-1,-1], "\nYou are in a small winding rocky corridor.\nThere is a small opening to the north.\nThe corridor continues south.", True, [], {}, [], False, [], [False, False, False, False]),
@@ -27,9 +29,26 @@ centralRooms=[
 	
 	rooms.room(9, [7,12,6,-1], "\nYou are on the porch of an old wooden house.\nThe house has a door to the east.\nOn either side of the door are boarded up windows.\nThere is a mail box infront of the door.\nThere is a garden path to the north and a road leading south.", False, [], {"mailbox":[False,items.item("letter")]}, [], True, [], [False, False, False, False]),
 
-	rooms.room(10, [15,-1,11,4], "\nYou are in the middle of a forest.", False, [], {}, [], False, [], [False, False, False, False]),
+	rooms.room(10, [15,-1,11,4], "\nYou are in the middle of a forest.", False, [], {}, [], False, [], [True, False, False, False]),
 
 	rooms.room(11, [-1,-1,14,10], "\nYou are in a clearing in the woods.\nThere are paths leading east and west.\nThere is a unicorn in the middle of the clearing watching you carefully.", False, [], {}, [], False, [], [False, False, False, False]),
 	
 	rooms.room(12, [9,13,-1,-1], "\nYou are on a road.\nIt goes north and south.", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(13, [12,18,17,16], "\nYou are in small bustling town.\nPeople are hurrying around you on their days errands.\nThe Goldshire Inn is to the west.\nThere is a blacksmith to the east.\nThere are roads out of town to the north and south.", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(14, [20,19,-1,11], "\nYou are in a seemingly endless forest.\nThe smell of death is prevelant in the air.\nThe undergrowth seems to creep up on you everytime you look away.", True, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(15, [23,10,-1,-1], "\nYou are in an overgrown abandoned cave.\nThere is a small opening to the north.\nThere is light to the south.", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(16, [-1,-1,13,-1], "\nYou are in a well lit inn.\nThere are jovial people singing and dancing around you.\nThe barmaid is walking around looking for someone to talk to.\nThe entrance to the inn from the town is to the east.", False, [], {}, [], False, [npcs.barmaid("barmaid", 2, 1, 1, {"room":20,"beer":5,"ale":5,"drink":5})], [False, False, False, False]),
+	
+	rooms.room(17, [-1,-1,-1,13], "\nYou are in a blacksmith's shop.\nThe blacksmith is working at the forge.", False, [], {}, [], False, [npcs.vendor("blacksmith", 5, 2, 2, {weapons.weapon("long sword",8,5,0,2):50,armors.armor("plate-mail",-2,"Whole Body"):120})], [False, False, False, False]),
+	
+	rooms.room(18, [13,29,-1,-1], "\nYou are on an old decaying pathway that leads north and south.\nVines sprawl across the path making it hard to walk.", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(19, [14,-1,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [], {}, [npcs.npc("bear",25,4,10)], False, [], [False, False, False, False]),
+	
+	rooms.room(20, [-1,14,-1,21], "\nYou are on a small path in the middle of a horrid forest.\nThe path seems to wind endlessly to the west and to the south.", True, [], {}, [], False, [], [False, False, False, False]),
+	
 ]
