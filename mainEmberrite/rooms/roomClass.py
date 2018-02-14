@@ -4,10 +4,10 @@ import roomLocator
 import battles
 
 class room:
-	def __init__(self, location, adjacents, description, dark, inventory, containers, monsters, bed, people):
+	def __init__(self, location, adjacents, description, dark, inventory, containers, monsters, bed, people, secretDoors):
 		#room location number
 		self.location = location
-		#array of adjacents room numbers, -1 if no room there
+		#array of adjacents room numbers, -1 if no room there [n,s,e,w]
 		self.adjacents = adjacents
 		#description of room
 		self.description = description
@@ -23,6 +23,8 @@ class room:
 		self.bed = bed
 		#people in room that can interact with player
 		self.people = people
+		#secret doors [n,s,e,w]
+		self.secretDoors = secretDoors
 	
 	#accessors
 	def returnLocation(self):
@@ -61,30 +63,36 @@ class room:
 			choice = raw_input("\n>>> ").lower()
 			
 			#rooms
+			#if users types go then direction
+			if(choice[:9] == "go to the"):
+    				choice = choice[10:]
+			elif(choice[:2] == "go"):
+				choice = choice[3:]
+			#directions
 			if ((choice == "n") or (choice == "north")):
 				if(self.adjacents[0] >= 0):
-					return(roomLocator.getRoom(self.adjacents[0], hero, inv))
+					roomLocator.getRoom(self.adjacents[0]).manager(hero, inv)
 				else:
 					print("\n[!] You can not go that way!")
 					continue
 				
 			elif((choice == "s") or (choice == "south")):
 				if(self.adjacents[1] >= 0):
-					return(roomLocator.getRoom(self.adjacents[1], hero, inv))
+					roomLocator.getRoom(self.adjacents[1]).manager(hero, inv)
 				else:
 					print("\n[!] You can not go that way!")
 					continue
 				
 			elif((choice == "e") or (choice == "east")):
 				if(self.adjacents[2] >= 0):
-					return(roomLocator.getRoom(self.adjacents[2], hero, inv))
+					roomLocator.getRoom(self.adjacents[2]).manager(hero, inv)
 				else:
 					print("\n[!] You can not go that way!")
 					continue
 				
 			elif((choice == "w") or (choice == "west")):
 				if(self.adjacents[3] >= 0):
-					return(roomLocator.getRoom(self.adjacents[3], hero, inv))
+					roomLocator.getRoom(self.adjacents[3]).manager(hero, inv)
 				else:
 					print("\n[!] You can not go that way!")
 					continue

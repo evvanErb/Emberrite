@@ -138,6 +138,10 @@ def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople, roomLo
 	#Exit game
 	elif (choice =="exit"):
 		exit()
+	
+	#List commands with menu options
+	elif((choice == "menu") or (choice == "help")):
+		return("\nDirections:\nNorth\nSouth\nEast\nWest\n\nCommands:\ninventory - lists your inventory\nsearch - searches room\nlight torch - lights torch\nchange torch - changes torch\ncheck torch - checks torch's current status\ncheck health - prints current health\ncheck armor - checks armor equipped\ncheck weapon - checks equiped weapon\ncheck gold - checks how much gold you have\nequip weapon - equip new weapon\nequip armor - equip new armor")
 
 	#Items that can not be taken/opened/closed
 	#if user trys to take an item
@@ -157,6 +161,29 @@ def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople, roomLo
 				for c in range(1, len(roomContainers[i])):
 					#if item in container
 					if(choice[5:] == roomContainers[i][c].returnName()):
+						addedItem = roomContainers[i][c]
+						inv.addItem(addedItem)
+						roomContainers[i].pop(c)
+						return("\n[*] " + addedItem.returnName() + " taken.")
+		#if  item not in room or in closed container
+		return("\n[!] That item can not be taken!")
+	#get version of take
+	if (choice[:3] == "get"):
+    		for i in range(len(roomInv)):
+			#if in invetnory
+			if (choice[4:] == roomInv[i].returnName()):
+				toAdd = roomInv[i]
+				inv.addItem(toAdd)
+				roomInv.pop(i)
+				return("\n[*] " + toAdd.returnName() + " taken.")
+		#check containers
+		for i in roomContainers:
+			#if container open
+			if(roomContainers[i][0]):
+				#iterate over container contents
+				for c in range(1, len(roomContainers[i])):
+					#if item in container
+					if(choice[4:] == roomContainers[i][c].returnName()):
 						addedItem = roomContainers[i][c]
 						inv.addItem(addedItem)
 						roomContainers[i].pop(c)
