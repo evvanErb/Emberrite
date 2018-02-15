@@ -51,4 +51,30 @@ centralRooms=[
 	
 	rooms.room(20, [-1,14,-1,21], "\nYou are on a small path in the middle of a horrid forest.\nThe path seems to wind endlessly to the west and to the south.", True, [], {}, [], False, [], [False, False, False, False]),
 	
+	rooms.room(21, [-1,-1,20,22], "\nYou are at the top of a giant ravene.\nThere is a waterfall gushing down from the otherside of the chasm.\nThe path continues west and east.", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(22, [-1,-1,21,25], "\nYou are on the shore of a giant lake.\nTo your east there is a path leading into a forest.\nTo your west there is a run down old hut.", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(23, [24,15,-1,-1], "\nYou are in a small dank passageway that leads north and south.", True, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(24, [27,23,28,-1], "\nYou are at the base of a giant waterfall in a ravene.\nThe shore runs to the east and to the south.", False, [], {}, [], False, [], [True, False, False, False]),
+	
+	rooms.room(25, [-1,-1,22,26], "\nYou are in a small dark hut.\nThere is a door to the east.", False, [], {}, [npcs.npc("witch",25,1,12)], False, [], [False, False, False, True]),
+	
+	rooms.room(26, [-1,-1,25,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThere is a trap door leading up.", True, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(27, [-1,24,-1,-1], "\nYou are in a small wet cave.\nThe sound of rushing water can be heard to the south.", True, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(28, [-1,-1,-1,24], "\nYou are on the shore of a beach.\nThe sand is wet and cold.\nThere is a path leading into a forest to your west.", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(29, [18,-1,30,-1], "\nYou are in a smelly decaying marsh.\nThere are pathes to the north and to the east.", False, [], {}, [npcs.npc("water elemental",40,1,12)], False, [], [False, False, False, False]),
+	
+	rooms.room(30, [31,33,32,29], "\nYou are on a mountain path.\nThere is a cave to the north.\nThe path runs east and west.", False, [], {}, [], False, [], [False, True, False, False]),
+	
+	rooms.room(31, [-1,30,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [], {}, [npcs.npc("mountain lion",20,2,8)], False, [], [False, False, False, False]),
+	
+	rooms.room(32, [-1,-1,-1,30], "\nYou are in a graveyard.\nThere is a path leading west.\nTo the east is a giant castle looming over the small graveyard.", False, [], {}, [npcs.npc("skeleton",10,1,5)], False, [], [False, False, False, False]),
+	
+	rooms.room(33, [30,-1,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [], {}, [npcs.npc("troll",50,3,10)], False, [], [False, False, False, False]),
+	
 ]
