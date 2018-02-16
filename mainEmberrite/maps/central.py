@@ -47,7 +47,7 @@ centralRooms=[
 	
 	rooms.room(18, [13,29,-1,-1], "\nYou are on an old decaying pathway that leads north and south.\nVines sprawl across the path making it hard to walk.", False, [], {}, [], False, [], [False, False, False, False]),
 	
-	rooms.room(19, [14,-1,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [], {}, [npcs.npc("bear",25,4,10)], False, [], [False, False, False, False]),
+	rooms.room(19, [14,-1,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [weapons.weapon("axe",6,5,0,1), items.gold("gold",50)], {}, [npcs.npc("bear",25,4,10)], False, [], [False, False, False, False]),
 	
 	rooms.room(20, [-1,14,-1,21], "\nYou are on a small path in the middle of a horrid forest.\nThe path seems to wind endlessly to the west and to the south.", True, [], {}, [], False, [], [False, False, False, False]),
 	
@@ -61,9 +61,9 @@ centralRooms=[
 	
 	rooms.room(25, [-1,-1,22,26], "\nYou are in a small dark hut.\nThere is a door to the east.", False, [], {}, [npcs.npc("witch",25,1,12)], False, [], [False, False, False, True]),
 	
-	rooms.room(26, [-1,-1,25,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThere is a trap door leading up.", True, [], {}, [], False, [], [False, False, False, False]),
+	rooms.room(26, [-1,-1,25,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThere is a trap door leading up.", True, [items.superHealthPotion(), items.healthPotion()], {}, [], False, [], [False, False, False, False]),
 	
-	rooms.room(27, [-1,24,-1,-1], "\nYou are in a small wet cave.\nThe sound of rushing water can be heard to the south.", True, [], {}, [], False, [], [False, False, False, False]),
+	rooms.room(27, [-1,24,-1,-1], "\nYou are in a small wet cave.\nThe sound of rushing water can be heard to the south.", True, [items.superHealthPotion(), items.gold("gold",756)], {}, [], False, [], [False, False, False, False]),
 	
 	rooms.room(28, [-1,-1,-1,24], "\nYou are on the shore of a beach.\nThe sand is wet and cold.\nThere is a path leading into a forest to your west.", False, [], {}, [], False, [], [False, False, False, False]),
 	
@@ -71,10 +71,10 @@ centralRooms=[
 	
 	rooms.room(30, [31,33,32,29], "\nYou are on a mountain path.\nThere is a cave to the north.\nThe path runs east and west.", False, [], {}, [], False, [], [False, True, False, False]),
 	
-	rooms.room(31, [-1,30,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [], {}, [npcs.npc("mountain lion",20,2,8)], False, [], [False, False, False, False]),
+	rooms.room(31, [-1,30,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [weapons.weapon("short sword",6,5,0,1), items.gold("gold",256)], {}, [npcs.npc("mountain lion",20,2,8)], False, [], [False, False, False, False]),
 	
 	rooms.room(32, [-1,-1,-1,30], "\nYou are in a graveyard.\nThere is a path leading west.\nTo the east is a giant castle looming over the small graveyard.", False, [], {}, [npcs.npc("skeleton",10,1,5)], False, [], [False, False, False, False]),
 	
-	rooms.room(33, [30,-1,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [], {}, [npcs.npc("troll",50,3,10)], False, [], [False, False, False, False]),
+	rooms.room(33, [30,-1,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [items.item("amulet"), items.gold("gold",567)], {}, [npcs.npc("troll",50,3,10)], False, [], [False, False, False, False]),
 	
 ]

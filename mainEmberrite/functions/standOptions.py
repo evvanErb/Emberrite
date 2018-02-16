@@ -152,6 +152,29 @@ def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople, roomLo
 	#Items that can not be taken/opened/closed
 	#if user trys to take an item
 	if (choice[:4] == "take"):
+    	#if gold
+		if (choice[5:] == "gold"):
+    		#check if in room inv
+			for i in range(len(roomInv)):
+    			#if in invetnory
+				if (choice[5:] == roomInv[i].returnName()):
+					toAdd = roomInv[i].returnAmount()
+					inv.addGold(toAdd)
+					roomInv.pop(i)
+					return("\n[*] " + str(toAdd) + " gold taken.")
+			#check containers
+			for i in roomContainers:
+				#if container open
+				if(roomContainers[i][0]):
+					#iterate over container contents
+					for c in range(1, len(roomContainers[i])):
+						#if item in container
+						if(choice[5:] == roomContainers[i][c].returnName()):
+							toAdd = roomContainers[i][c].returnAmount()
+							inv.addGold(toAdd)
+							roomContainers[i].pop(c)
+							return("\n[*] " + toAdd + " gold taken.")
+		#if not gold
 		for i in range(len(roomInv)):
 			#if in invetnory
 			if (choice[5:] == roomInv[i].returnName()):
