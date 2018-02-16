@@ -19,7 +19,7 @@ castleRooms=[
 	
 	rooms.room(38, [36,37,40,-1], "\n38", False, [], {}, [], False, [], [False, False, False, False]),
 	
-	rooms.room(39, [37,41,42,-1], "\n39", False, [], {}, [], False, [], [False, False, False, False]),
+	rooms.room(39, [37,41,42,-1], "\n39", False, [], {}, [], False, [], [False, False, True, False]),
 	
 	rooms.room(40, [-1,-1,43,38], "\n40", False, [], {}, [], False, [], [False, False, False, False]),
 	
@@ -27,7 +27,7 @@ castleRooms=[
 	
 	rooms.room(42, [-1,44,-1,39], "\n42", False, [], {}, [], False, [], [False, False, False, False]),
 	
-	rooms.room(43, [-1,-1,46,40], "\n43", False, [], {}, [], False, [], [False, False, False, False]),
+	rooms.room(43, [-1,-1,46,40], "\n43", False, [], {}, [], False, [], [False, False, True, False]),
 	
 	rooms.room(44, [42,-1,45,-1], "\n44", False, [], {}, [], False, [], [False, False, False, False]),
 	
@@ -39,7 +39,7 @@ castleRooms=[
 	
 	rooms.room(48, [35,-1,-1,-1], "\n48", False, [], {}, [], False, [], [False, False, False, False]),
 	
-	rooms.room(49, [45,50,-1,-1], "\n49", False, [], {}, [], False, [], [False, False, False, False]),
+	rooms.room(49, [45,50,-1,-1], "\n49", False, [], {}, [], False, [], [False, True, False, False]),
 	
 	rooms.room(50, [-1,51,-1,49], "\n50", False, [], {}, [], False, [], [False, False, False, False]),
 	
