@@ -73,7 +73,7 @@ centralRooms=[
 	
 	rooms.room(31, [-1,30,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [weapons.weapon("short sword",6,5,0,1), items.gold("gold",256)], {}, [npcs.npc("mountain lion",20,2,8)], False, [], [False, False, False, False]),
 	
-	rooms.room(32, [-1,-1,-1,30], "\nYou are in a graveyard.\nThere is a path leading west.\nTo the east is a giant castle looming over the small graveyard.", False, [], {}, [npcs.npc("skeleton",10,1,5)], False, [], [False, False, False, False]),
+	rooms.room(32, [-1,-1,34,30], "\nYou are in a graveyard.\nThere is a path leading west.\nTo the east is a giant castle looming over the small graveyard.", False, [], {}, [npcs.npc("skeleton",10,1,5)], False, [], [False, False, False, False]),
 	
 	rooms.room(33, [30,-1,-1,-1], "\nYou are in a roomy cave.\nWater drips from the rocks overhead.\nThe smell of rotting corpses is prevelant.\nThere are skeletons in the corner of the room.", True, [items.item("amulet"), items.gold("gold",567)], {}, [npcs.npc("troll",50,3,10)], False, [], [False, False, False, False]),
 	
