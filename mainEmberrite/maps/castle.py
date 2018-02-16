@@ -11,7 +11,7 @@ castleRooms=[
 	#(location, adjacent rooms[n,s,e,w], description, dark, inventory, containers, monsters, bed, people, secret passageways[n,s,e,w])
 	rooms.room(34, [36,37,35,32], "\n34", False, [], {}, [], False, [], [False, False, False, False]),
 	
-	rooms.room(35, [-1,-1,-1,34], "\n35", False, [], {}, [], False, [], [False, False, False, False]),
+	rooms.room(35, [47,48,-1,34], "\n35", False, [], {}, [], False, [], [False, False, False, False]),
 	
 	rooms.room(36, [-1,-1,38,34], "\n36", False, [], {}, [], False, [], [False, False, False, False]),
 	
@@ -31,8 +31,18 @@ castleRooms=[
 	
 	rooms.room(44, [42,-1,45,-1], "\n44", False, [], {}, [], False, [], [False, False, False, False]),
 	
-	rooms.room(45, [-1,-1,-1,44], "\n45", False, [], {}, [], False, [], [False, False, False, False]),
+	rooms.room(45, [-1,49,-1,44], "\n45", False, [], {}, [], False, [], [False, False, False, False]),
 	
 	rooms.room(46, [-1,-1,-1,43], "\n46", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(47, [-1,35,-1,-1], "\n47", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(48, [35,-1,-1,-1], "\n48", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(49, [45,50,-1,-1], "\n49", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(50, [-1,51,-1,49], "\n50", False, [], {}, [], False, [], [False, False, False, False]),
+	
+	rooms.room(51, [50,-1,-1,-1], "\n51", False, [], {}, [], False, [], [False, False, False, False]),
 
 ]
