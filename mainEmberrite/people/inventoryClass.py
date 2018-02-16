@@ -50,22 +50,22 @@ class inventory:
     def equipWeapon(self,weapon):
         if ((weapon == "bow") and (self.hero.returnClassName() == "hunter")):
             self.weapon = weapons.weapon("bow",4,50,0,2)
-            return(self.weapon)
+            return(True)
         elif ((weapon == "short sword") and ((self.hero.returnClassName() == "hunter") or (self.hero.returnClassName() == "rogue") or (self.hero.returnClassName() == "warrior"))):
             self.weapon = weapons.weapon("short sword",6,5,0,1)
-            return(self.weapon)
+            return(True)
         elif ((weapon == "hammer") and (self.hero.returnClassName() == "paladin")):
             self.weapon = weapons.weapon("hammer",6,5,0,1)
-            return(self.weapon)
+            return(True)
         elif ((weapon == "knife") and (self.hero.returnClassName() == "rogue")):
             self.weapon = weapons.weapon("knife",4,5,0,1)
-            return(self.weapon)
+            return(True)
         elif ((weapon == "axe") and ((self.hero.returnClassName() == "warrior") or (self.hero.returnClassName() == "hunter"))):
             self.weapon = weapons.weapon("axe",6,5,0,1)
-            return(self.weapon)
+            return(True)
         elif ((weapon == "long sword") and (self.hero.returnClassName() == "warrior")):
             self.weapon = weapons.weapon("long sword",8,5,0,2)
-            return(self.weapon)
+            return(True)
         else:
             return(False)
 
@@ -73,18 +73,18 @@ class inventory:
     def equipArmor(self,armor):
         if ((armor == "chain-mail") and ((self.hero.returnClassName() == "hunter") or (self.hero.returnClassName() == "warrior"))):
             self.armor = armors.armor("chain-mail",0,"Whole Body")
-            return(self.armor.returnName())
+            return(True)
         elif ((armor == "leather") and ((self.hero.returnClassName() == "hunter") or (self.hero.returnClassName() == "rogue") or (self.hero.returnClassName() == "warrior"))):
             self.armor = armors.armor("leather",4,"Whole Body")
-            return(self.armor.returnName())
+            return(True)
         elif ((armor == "plate-mail") and ((self.hero.returnClassName() == "paladin") or (self.hero.returnClassName() == "warrior"))):
             self.armor = armors.armor("plate-mail",-2,"Whole Body")
-            return(self.armor.returnName())
+            return(True)
         elif (armor == "cloth"):
             self.armor = armors.armor("cloth",7,"Whole Body")
-            return(self.armor.returnName())
+            return(True)
         else:
-            return("Armor selected not compatible with class")
+            return(False)
 
     #Return True if torch on or False if off
     def torchStatus(self):
