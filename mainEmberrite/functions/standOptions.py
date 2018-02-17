@@ -123,9 +123,18 @@ def standardOptions(choice,hero,inv, roomInv, roomContainers, roomPeople, roomLo
 	elif (choice == "search"):
 		searchVal = random.randint(1,6)
 		if ((searchVal <= 2) and (True in secretDoors)):
+			whichDoor = "north"
 			for i in range(len(secretDoors)):
+				#let user know what direction the door is in
+				if(secretDoors[i] and i == 1):
+					whichDoor = "south"
+				elif(secretDoors[i] and i == 2):
+					whichDoor = "east"
+				elif(secretDoors[i] and i == 3):
+					whichDoor = "west"
 				secretDoors[i] = False
-			return("\n[*] You found a secret door!")
+			#return secret door found
+			return("\n[*] You found a secret door to the " + whichDoor + "!")
 		else:
 			return("\n[!] You found nothing!")
 	
